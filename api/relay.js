@@ -11,6 +11,19 @@ module.exports = async (req, res) => {
     return res.status(500).json({ error: 'Missing Defender credentials' });
   }
 
+  const cors = require("cors");
+
+
+// Enable CORS for http://localhost:5173
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
+
   const relayer = new Relayer({
     apiKey: DEFENDER_API_KEY,
     apiSecret: DEFENDER_API_SECRET,
