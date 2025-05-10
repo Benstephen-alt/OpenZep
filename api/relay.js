@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
 
   try {
     const tx = await relayer.sendTransaction(req.body);
-    res.status(200).json({ txHash: tx.hash });
+    res.status(200).json({ hash: tx.hash });
   } catch (err) {
     console.error('Relay failed:', err);
     res.status(500).json({ error: err.message });
